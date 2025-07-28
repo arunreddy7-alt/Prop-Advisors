@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
   const [form, setForm] = useState({
@@ -17,10 +18,40 @@ const ContactForm = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send to API or show a message)
-    alert('Thank you for your enquiry!');
+    
+    try {
+      const templateParams = {
+        to_email: 'brandit3116@gmail.com',
+        name: form.name,
+        from_name: form.name,
+        from_email: form.email,
+        phone: form.phone,
+        project: form.project,
+        budget: form.budget,
+        timeline: form.timeline,
+        location: form.location,
+        message: form.comments,
+        time: new Date().toLocaleString(),
+      };
+
+      await emailjs.send(
+        'service_a2436dp',
+        'template_c583wrk',
+        templateParams,
+        'fxIq3mEsIuoKM-0nb'
+      );
+
+      alert('Thank you for your enquiry! We will get back to you soon.');
+      setForm({
+        name: '', phone: '', email: '', project: '',
+        budget: '', timeline: '', location: '', comments: ''
+      });
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to submit form. Please try again.');
+    }
   };
 
   return (
@@ -32,35 +63,35 @@ const ContactForm = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className="block text-gray-700 mb-2">Name</label>
-              <input type="text" name="name" value={form.name} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e]" />
+              <input type="text" name="name" value={form.name} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e] text-black" />
             </div>
             <div>
               <label className="block text-gray-700 mb-2">Phone Number</label>
-              <input type="tel" name="phone" value={form.phone} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e]" />
+              <input type="tel" name="phone" value={form.phone} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e] text-black" />
             </div>
             <div>
               <label className="block text-gray-700 mb-2">Email</label>
-              <input type="email" name="email" value={form.email} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e]" />
+              <input type="email" name="email" value={form.email} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e] text-black" />
             </div>
             <div>
               <label className="block text-gray-700 mb-2">Project Interested</label>
-              <input type="text" name="project" value={form.project} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e]" />
+              <input type="text" name="project" value={form.project} onChange={handleChange} required className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e] text-black" />
             </div>
             <div>
               <label className="block text-gray-700 mb-2">What is your budget?</label>
-              <input type="text" name="budget" value={form.budget} onChange={handleChange} className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e]" />
+              <input type="text" name="budget" value={form.budget} onChange={handleChange} className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e] text-black" />
             </div>
             <div>
               <label className="block text-gray-700 mb-2">How soon are you looking to buy?</label>
-              <input type="text" name="timeline" value={form.timeline} onChange={handleChange} className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e]" />
+              <input type="text" name="timeline" value={form.timeline} onChange={handleChange} className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e] text-black" />
             </div>
             <div className="md:col-span-2">
               <label className="block text-gray-700 mb-2">Where are you based out currently?</label>
-              <input type="text" name="location" value={form.location} onChange={handleChange} className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e]" />
+              <input type="text" name="location" value={form.location} onChange={handleChange} className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e] text-black" />
             </div>
             <div className="md:col-span-2">
               <label className="block text-gray-700 mb-2">Additional Comments/Remarks</label>
-              <textarea name="comments" value={form.comments} onChange={handleChange} rows={3} className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e]" />
+              <textarea name="comments" value={form.comments} onChange={handleChange} rows={3} className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-[#b68a5e] text-black" />
             </div>
           </div>
           <button type="submit" className="bg-[#b68a5e] text-white font-bold px-8 py-3 rounded-full shadow hover:bg-[#a67c52] transition mx-auto mt-4">Submit</button>

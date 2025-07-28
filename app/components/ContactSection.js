@@ -37,7 +37,7 @@ const ContactSection = () => {
   }, [total]);
 
   return (
-    <section className="w-full bg-[#f9f6f1] py-16 font-[Optima]" id="contact-form">
+    <section className="w-full bg-[#f9f6f1] py-16 font-[Optima] scroll-mt-28" id="contact-form">
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row gap-12 items-start">
         {/* Testimonials Carousel */}
         <div className="w-full md:w-1/2 flex flex-col items-start mt-14 md:mt-20">

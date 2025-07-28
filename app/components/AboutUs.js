@@ -2,7 +2,7 @@
 import React from 'react';
 
 const AboutUs = () => (
-  <section id="about-us" className="w-full bg-white py-16 font-[Optima]">
+  <section id="about-us" className="w-full bg-white py-16 font-[Optima] scroll-mt-28">
     <div className="max-w-4xl mx-auto text-center">
       <h2 className="text-4xl md:text-5xl font text-[#b68a5e] font-[Optima] mb-6">About Us</h2>
       <p className="text-lg md:text-xl text-gray-800 font-normal leading-relaxed font-[Optima]">
