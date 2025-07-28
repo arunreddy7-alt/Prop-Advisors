@@ -11,18 +11,18 @@ const ProjectAdoraDeGoa = () => {
         <div className="max-w-5xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-12">
             {/* Image */}
-            <div className="flex-1 w-full md:w-1/2 relative min-h-[400px]">
+            <div className="flex-1 w-full md:w-1/2 relative min-h-[250px] md:min-h-[400px] px-2 md:px-0">
               {/* Bottom Image (offset down and right) */}
               <img
                 src="/adoradegoa1.jpg"
                 alt="Adora De Goa Bottom"
-                className="absolute left-12 top-50 w-4/5 aspect-square rounded-lg shadow-2xl shadow-[#b68a5e] z-0 object-cover"
+                className="absolute left-25 md:left-12 top-19 md:top-50 w-2/3 md:w-4/5 aspect-square rounded-lg shadow-md md:shadow-2xl shadow-[#b68a5e] z-0 object-cover"
               />
               {/* Top Image (offset up and left, overlapping) */}
               <img
                 src="/adoradegoa.jpg"
                 alt="Adora De Goa Top"
-                className="absolute left-0 top-0 -ml-36 w-4/5 aspect-square rounded-lg shadow-2xl shadow-[#b68a5e] z-10 object-cover"
+                className="absolute left-0 md:left-0 top-0 md:-ml-36 w-2/3 md:w-4/5 aspect-square rounded-lg shadow-md md:shadow-2xl shadow-[#b68a5e] z-10 object-cover"
               />
             </div>
             {/* Content */}

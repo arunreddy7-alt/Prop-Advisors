@@ -11,20 +11,19 @@ const ProjectShriRamGharunda = () => {
         <div className="max-w-5xl mx-auto px-4">
           <div className="flex flex-col md:flex-row-reverse items-center gap-12">
             {/* Image */}
-            <div className="flex-1 w-full md:w-1/2 relative min-h-[400px]">
+            <div className="flex-1 w-full md:w-1/2 relative min-h-[250px] md:min-h-[400px] px-2 md:px-0">
               <div className="md:translate-x-24">
                 {/* Bottom Image (offset down and right) */}
                 <img
                   src="/shriramgharunda1.jpg"
                   alt="Shri Ram Gharunda Bottom"
-                  className="relative left-30 top-35 w-4/5 aspect-square rounded-lg shadow-2xl shadow-[#b68a5e] z-0 object-cover"
+                  className="relative left-25 md:left-12 top-19 md:top-35 w-2/3 md:w-4/5 aspect-square rounded-lg shadow-md md:shadow-2xl shadow-[#b68a5e] z-0 object-cover"
                 />
-
                 {/* Top Image (offset up and left, overlapping) */}
                 <img
                   src="/shriramgharunda.jpg"
                   alt="Shri Ram Gharunda Top"
-                   className="relative left-16 -top-9 -ml-36 w-4/5 aspect-square rounded-lg shadow-2xl shadow-[#b68a5e] z-10 object-cover"
+                  className="relative left-0 md:left-16 -top-5 md:-top-9 md:-ml-36 w-2/3 md:w-4/5 aspect-square rounded-lg shadow-md md:shadow-2xl shadow-[#b68a5e] z-10 object-cover"
                 />
               </div>
             </div>
