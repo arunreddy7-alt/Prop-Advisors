@@ -1,37 +1,171 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { emailjsConfig } from '../config/emailjs';
 
-const Footer = () => (
-  <footer className="w-full bg-[#c9a063] text-white py-10 font-[Optima] mt-0">
-    <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
-      {/* Contact Info - Left */}
-      <div className="flex flex-col items-start md:items-start gap-2 md:w-1/3 order-2 md:order-2 text-left md:text-left w-full md:w-auto">
-        <span className="font-semibold text-lg mt-3 mb-1">Address</span>
-        <span className="max-w-xs">H No 6-1-18 Provident Homes, Pkw-t08-609 Bhavani Colony, Katedan, Rajendranagar, Rangareddy, Hyderabad, India, Telangana</span>
-        <span className="font-semibold text-lg mb-1">Call Us</span>
-        <a href="tel:+919059911335" className="underline">+91 9059911335</a>
-        <div className="flex gap-3 mt-3">
-          {/* Optional: Social Links */}
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg></a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.069 1.646.069 4.85s-.012 3.584-.07 4.85c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-2.241 1.246-3.608 1.308-1.266.058-1.646.069-4.85.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.515 2.497 5.782 2.225 7.148 2.163 8.414 2.105 8.794 2.094 12 2.094m0-2.163C8.741 0 8.332.012 7.052.07 5.771.128 4.635.4 3.662 1.374c-.973.973-1.246 2.109-1.308 3.39C2.012 5.668 2 6.077 2 12c0 5.923.012 6.332.07 7.612.062 1.281.335 2.417 1.308 3.39.973.973 2.109 1.246 3.39 1.308C8.332 23.988 8.741 24 12 24s3.668-.012 4.948-.07c1.281-.062 2.417-.335 3.39-1.308.973-.973 1.246-2.109 1.308-3.39.058-1.28.07-1.689.07-7.612 0-5.923-.012-6.332-.07-7.612-.062-1.281-.335-2.417-1.308-3.39C19.365.4 18.229.128 16.948.07 15.668.012 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.2-10.406a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+const Footer = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    const formData = new FormData(e.target);
+    const templateParams = {
+      from_name: formData.get('name'),
+      from_email: formData.get('email'),
+      from_phone: formData.get('phone'),
+      project_interested: formData.get('project'),
+      budget: formData.get('budget'),
+      timeline: formData.get('timeline'),
+      location: formData.get('location'),
+      comments: formData.get('comments'),
+      to_name: 'Amodha Team'
+    };
+
+    try {
+      const result = await emailjs.send(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        templateParams,
+        emailjsConfig.publicKey
+      );
+
+      if (result.status === 200) {
+        setSubmitStatus('success');
+        e.target.reset();
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+  <footer id="contact" className="w-full bg-[#e6dbc9] text-black py-10 font-[Optima] mt-0">
+    <div className="max-w-7xl mx-auto px-4 md:px-10">
+      {/* Headings */}
+      <div className="mb-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
+          A lifetime opportunity awaits - Book now!
+        </h2>
+      </div>
+
+      {/* Content Layout */}
+      <div className="flex justify-center">
+        {/* Centered Form */}
+        <div className="w-full max-w-4xl space-y-6">
+          <h2 className="text-xl md:text-2xl font-bold text-center">
+            Contact Us
+          </h2>
+          <form onSubmit={handleFormSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+              <input
+                type="text"
+                name="project"
+                placeholder="Project Interested"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input
+                type="text"
+                name="budget"
+                placeholder="What is your budget?"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+              <input
+                type="text"
+                name="timeline"
+                placeholder="How soon are you looking to buy?"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+            </div>
+            <input
+              type="text"
+              name="location"
+              placeholder="Where are you based out currently?"
+              required
+              className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            />
+            <textarea
+              name="comments"
+              placeholder="Additional Comments/Remarks"
+              className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              rows="4"
+            ></textarea>
+            
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                Thank you! Your message has been sent successfully. We will contact you soon.
+              </div>
+            )}
+            {submitStatus === 'error' && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                Sorry, there was an error sending your message. Please try again.
+              </div>
+            )}
+            
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-[#B8956A] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#A6845A] transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? 'Sending...' : 'Submit'}
+            </button>
+          </form>
+          
+          {/* Logo and Contact Information */}
+          <div className="mt-12 text-center">
+            <div className="mb-6">
+              <img 
+                src="/logo.png" 
+                alt="Prop Advisors Logo" 
+                className="mx-auto w-32 h-32 filter brightness-0"
+              />
+            </div>
+            <div className="space-y-2 text-black">
+              <p className="text-lg font-semibold">Address - </p>
+            </div>
+          </div>
         </div>
       </div>
-      {/* Logo - Center */}
-      <div className="flex flex-col items-center md:w-1/3 order-1 md:order-2 mb-4 md:mb-0 mt-16 md:ml-18">
-        <img src="/logo.png" alt="Prop Advisors Logo" className="h-36 w-auto mb-2 mx-auto" />
-              </div>
-      {/* Quick Links - Right */}
-      <div className="flex flex-col items-start md:items-end gap-2 md:w-1/3 order-3 text-left md:text-right w-full md:w-auto">
-        <span className="font-semibold text-lg mb-1">Quick Links</span>
-        <a href="#about-us" className="hover:underline">About Us</a>
-        <a href="#amodha" className="hover:underline">Project Amodha</a>
-        <a href="#shriramgharunda" className="hover:underline">Project Shri Ram Gharunda</a>
-        <a href="#adoradegoa" className="hover:underline">Project Adora De Goa</a>
-        <a href="#contact-form" className="hover:underline">Get in touch</a>
-      </div>
     </div>
-    <div className="text-center text-xs text-white mt-8 opacity-80">&copy; {new Date().getFullYear()} Prop Advisors. All rights reserved.</div>
   </footer>
-);
+  );
+};
 
-export default Footer; 
+export default Footer;
