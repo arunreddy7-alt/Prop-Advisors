@@ -154,7 +154,6 @@ const LandingPage = () => {
         <ul className="flex flex-col p-4 gap-3 pt-24">
           <li><a href="#home" className="text-gray-800 font-medium no-underline block py-2" onClick={() => setIsMobileMenuOpen(false)}>Home</a></li>
           <li><a href="#about" className="text-gray-800 font-medium no-underline block py-2" onClick={() => setIsMobileMenuOpen(false)}>About</a></li>
-          <li><a href="#gallery" className="text-gray-800 font-medium no-underline block py-2" onClick={() => setIsMobileMenuOpen(false)}>Gallery</a></li>
           <li><a href="#amenities" className="text-gray-800 font-medium no-underline block py-2" onClick={() => setIsMobileMenuOpen(false)}>Amenities</a></li>
           <li><a href="#layout" className="text-gray-800 font-medium no-underline block py-2" onClick={() => setIsMobileMenuOpen(false)}>Layout</a></li>
           <li><a href="#contact" className="text-gray-800 font-medium no-underline block py-2" onClick={() => setIsMobileMenuOpen(false)}>Contact us</a></li>
