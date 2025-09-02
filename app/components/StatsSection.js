@@ -3,17 +3,17 @@ import React from 'react';
 
 const StatsSection = () => {
   return (
-    <section className="w-full bg-white py-12 -mt-8 md:-mt-17">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+    <section className="w-full bg-white py-0 sm:py-2 -mt-48 sm:-mt-32 md:-mt-16 lg:-mt-12">
+      <div className="max-w-6xl mx-auto px-3 sm:px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-6 md:gap-12 text-center justify-items-center">
           <div>
-            <div className="text-1xl md:text-2xl font-extrabold text-[#1F2937] leading-tight">50 Acres<br/>Mega Project</div>
+            <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#1F2937] leading-tight">50 Acres<br/><span className="text-base sm:text-lg md:text-xl font-normal">Mega Project</span></div>
           </div>
           <div>
-            <div className="text-1xl md:text-2xl font-extrabold text-[#1F2937]">LP, DTCP & RERA Approved Layout</div>
+            <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#1F2937]">LP, DTCP & RERA<br/><span className="text-base sm:text-lg md:text-xl font-normal">Approved Layout</span></div>
           </div>
           <div>
-            <div className="text-1xl md:text-2xl font-extrabold text-[#1F2937] leading-tight">Flexible<br/>Plot Sizes</div>
+            <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#1F2937] leading-tight">Flexible<br/><span className="text-base sm:text-lg md:text-xl font-normal">Plot Sizes</span></div>
           </div>
         </div>
       </div>

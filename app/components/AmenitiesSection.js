@@ -79,28 +79,29 @@ const AmenitiesSection = () => {
             {getCurrentAmenities().map((amenity, index) => (
               <div 
                 key={index}
-                className="flex-shrink-0 w-64 bg-[#B8956A] rounded-xl p-6 text-white shadow-lg"
+                className="flex-shrink-0 w-64 bg-[#b8a47a] rounded-xl p-6 text-white shadow-lg"
               >
                 <div className="text-4xl mb-4 text-center">{amenity.icon}</div>
                 <h3 className="text-lg font-semibold mb-2 text-center">{amenity.title}</h3>
               </div>
             ))}
           </div>
+        </div>
 
-          {/* Navigation Arrows - Left Corner */}
+        {/* Navigation Arrows - Below Boxes */}
+        <div className="flex justify-between mt-4">
           <button 
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[#B8956A] rounded-full flex items-center justify-center text-white hover:bg-[#A6845A] transition-colors shadow-lg z-10"
+            className="w-12 h-12 bg-[#b8a47a] rounded-full flex items-center justify-center text-white hover:bg-[#A6845A] transition-colors shadow-lg"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
-          {/* Navigation Arrows - Right Corner */}
           <button 
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[#B8956A] rounded-full flex items-center justify-center text-white hover:bg-[#A6845A] transition-colors shadow-lg z-10"
+            className="w-12 h-12 bg-[#b8a47a] rounded-full flex items-center justify-center text-white hover:bg-[#A6845A] transition-colors shadow-lg"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

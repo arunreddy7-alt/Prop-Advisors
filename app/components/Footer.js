@@ -48,7 +48,7 @@ const Footer = () => {
   };
 
   return (
-  <footer id="contact" className="w-full bg-[#e6dbc9] text-black py-10 font-[Optima] mt-0">
+  <footer id="contact" className="w-full bg-[#b8a47a] text-black py-10 font-[Optima] mt-0">
     <div className="max-w-7xl mx-auto px-4 md:px-10">
       {/* Headings */}
       <div className="mb-8">
@@ -142,7 +142,7 @@ const Footer = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#B8956A] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#A6845A] transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#b6821c] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#A6845A] transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Sending...' : 'Submit'}
             </button>

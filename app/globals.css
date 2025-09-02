@@ -35,3 +35,22 @@ body {
   background-color: rgba(0, 0, 0, 0.6) !important;
   pointer-events: auto !important;
 }
+
+/* Primary color class */
+.color-primary {
+  background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.section-heading {
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}

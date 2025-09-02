@@ -82,7 +82,7 @@ const HighlightsSection = () => {
 
   return (
     <>
-      <section id="about" className="w-full bg-[#e6dbc9] py-16 mt-6 md:mt-10">
+      <section id="about" className="w-full bg-[#b8a47a] py-16 mt-6 md:mt-10">
       <div className="max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         {/* Left visual placeholder with diamond shapes */}
         <div className="relative hidden lg:block">
@@ -103,20 +103,40 @@ const HighlightsSection = () => {
             </div>
           </div>
         </div>
+        
+        {/* Mobile responsive diamond shapes */}
+        <div className="relative block lg:hidden">
+          <div className="w-56 h-56 ml-15 mt-3 relative">
+            {/* Main diamond */}
+            <div className="w-full h-full bg-green-500 transform rotate-45 overflow-hidden border-4 border-white shadow-lg">
+              <img 
+                src="/image.jpg" 
+                className="w-full h-full object-cover transform -rotate-45 scale-150"
+              />
+            </div>
+            {/* Small diamond */}
+            <div className="absolute -bottom-7 -right-9 w-30 h-30 bg-[#B8956A] transform rotate-45 shadow-lg overflow-hidden border-2 border-white">
+              <img 
+                src="/amodha-logo.jpg" 
+                className="w-full h-full object-cover transform -rotate-45 scale-150"
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Right content */}
         <div className="text-[#1F2937] space-y-6">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#B8956A] leading-tight md:leading-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#b6821c] leading-tight md:leading-tight">
             Embrace your ticket to a prosperous & serene future!
           </h2>
-          <p className="text-[#1F2937]/80 leading-relaxed">
+          <p className="text-black/80 leading-relaxed">
             Amodha offers premium open plots in the rapidly growing locality of Burgula - Shadnagar, near Hyderabad, a prime destination with excellent connectivity to the Hyderabad–Bangalore Highway and Rajiv Gandhi International Airport. With secured 24x7 surveillance, landscaped parks, 633 Sq.Yds. Clubhouse, and a dedicated children’s play area, Amodha blends safety and modern infrastructure with natural surroundings. Surrounded by upcoming developments and infrastructural growth, Amodha is currently one of the most promising locations for investment near Hyderabad.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <button 
               onClick={handleEnquireNow}
-              className="bg-[#B8956A] text-white px-6 py-3 rounded font-bold hover:bg-[#A6845A] transition"
+              className="bg-[#b6821c] text-white px-6 py-3 rounded font-bold hover:bg-[#b6821c] transition"
             >
               Enquire Now
             </button>
