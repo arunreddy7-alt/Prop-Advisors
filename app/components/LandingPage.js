@@ -187,18 +187,18 @@ const LandingPage = () => {
             <div className="text-black max-w-2xl text-left ml-0 px-4 sm:px-0">
               <div className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-light italic mb-4 -mt-8" style={{ fontFamily: "'Calligraffitti', cursive" }}>
               </div>
-              <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#b6821c] mb-1 sm:mb-2 leading-tight drop-shadow-lg">
+              <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#d3a94a] mb-1 sm:mb-2 leading-tight drop-shadow-lg">
               Invest in a promising future with Amodha
               </h1>
-              <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#b6821c] mb-2 sm:mb-4 leading-tight drop-shadow-lg">
+              <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#d3a94a] mb-2 sm:mb-4 leading-tight drop-shadow-lg">
                 Region
               </h1>
               <div className="mb-2 sm:mb-3">
                 <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white drop-shadow-lg font-semibold">Exclusive </span>
-                <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-[#b6821c] font-bold drop-shadow-lg">Open Plots</span>
+                <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-[#d3a94a] font-bold drop-shadow-lg">Open Plots</span>
                 <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white drop-shadow-lg font-semibold"> Near Hyderabad</span>
               </div>
-              <div className="text-lg sm:text-lg md:text-xl lg:text-2xl text-[#b6821c] font-bold mb-2 sm:mb-4 drop-shadow-lg">
+              <div className="text-lg sm:text-lg md:text-xl lg:text-2xl text-[#d3a94a] font-bold mb-2 sm:mb-4 drop-shadow-lg">
               Burgula, Shadnagar
               </div>
               <div className="text-lg sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 text-white drop-shadow-lg font-semibold">

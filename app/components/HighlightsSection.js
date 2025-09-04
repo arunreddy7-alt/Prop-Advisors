@@ -126,7 +126,7 @@ const HighlightsSection = () => {
 
         {/* Right content */}
         <div className="text-[#1F2937] space-y-6">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#b6821c] leading-tight md:leading-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#8d5c14] leading-tight md:leading-tight">
             Embrace your ticket to a prosperous & serene future!
           </h2>
           <p className="text-black/80 leading-relaxed">
