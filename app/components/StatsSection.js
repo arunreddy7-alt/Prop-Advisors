@@ -3,7 +3,7 @@ import React from 'react';
 
 const StatsSection = () => {
   return (
-    <section className="w-full bg-white py-4 sm:py-6 -mt-16 sm:-mt-16 md:-mt-12 lg:-mt-10">
+    <section className="w-full bg-white py-4 sm:py-6 -mt-20 sm:-mt-16 md:-mt-12 lg:-mt-10">
       <div className="max-w-6xl mx-auto px-3 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-6 md:gap-12 text-center justify-items-center">
           <div>
