@@ -82,7 +82,7 @@ const HighlightsSection = () => {
 
   return (
     <>
-      <section id="about" className="w-full bg-[#b8a47a] py-16 mt-6 md:mt-10">
+      <section id="about" className="w-full bg-[#f7e3b5] py-16 mt-6 md:mt-10">
       <div className="max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         {/* Left visual placeholder with diamond shapes */}
         <div className="relative hidden lg:block">

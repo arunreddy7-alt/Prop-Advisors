@@ -113,8 +113,8 @@ const LandingPage = () => {
       {/* Fixed navigation bar */}
       <nav className={`fixed top-0 left-0 right-0 flex items-center px-4 md:px-10 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[#c2b088]/95 shadow-lg py-0' 
-          : 'bg-[#c2b088]/90 py-2 sm:py-4'
+          ? 'bg-[#f7e3b5]/95 shadow-lg py-0' 
+          : 'bg-[#f7e3b5]/90 py-2 sm:py-4'
       }`}>
         {/* Logo */}
         <div className="flex items-center">
@@ -179,7 +179,7 @@ const LandingPage = () => {
         </div>
         
         {/* Background overlay section (slightly shifted up) */}
-        <div className="absolute left-0 w-full h-full bg-[#b8a47a] z-15 -top-60"></div>
+        <div className="absolute left-0 w-full h-full bg-[#f7e3b5] z-15 -top-60"></div>
         
         {/* Content */}
         <div className="absolute inset-0 flex items-start z-30 pt-65 sm:pt-7 sm:items-center">
@@ -187,18 +187,15 @@ const LandingPage = () => {
             <div className="text-black max-w-2xl text-left ml-0 px-4 sm:px-0">
               <div className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-light italic mb-4 -mt-8" style={{ fontFamily: "'Calligraffitti', cursive" }}>
               </div>
-              <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#d3a94a] mb-1 sm:mb-2 leading-tight drop-shadow-lg">
+              <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#e6c86a] mb-1 sm:mb-2 leading-tight drop-shadow-lg">
               Invest in a promising future with Amodha
-              </h1>
-              <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#d3a94a] mb-2 sm:mb-4 leading-tight drop-shadow-lg">
-                Region
               </h1>
               <div className="mb-2 sm:mb-3">
                 <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white drop-shadow-lg font-semibold">Exclusive </span>
-                <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-[#d3a94a] font-bold drop-shadow-lg">Open Plots</span>
+                <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-[#e6c86a] font-bold drop-shadow-lg">Open Plots</span>
                 <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white drop-shadow-lg font-semibold"> Near Hyderabad</span>
               </div>
-              <div className="text-lg sm:text-lg md:text-xl lg:text-2xl text-[#d3a94a] font-bold mb-2 sm:mb-4 drop-shadow-lg">
+              <div className="text-lg sm:text-lg md:text-xl lg:text-2xl text-[#e6c86a] font-bold mb-2 sm:mb-4 drop-shadow-lg">
               Burgula, Shadnagar
               </div>
               <div className="text-lg sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 text-white drop-shadow-lg font-semibold">
@@ -231,6 +228,30 @@ const LandingPage = () => {
 
       {/* Amenities Section */}
       <AmenitiesSection />
+
+      {/* Promotional Banner (after Amenities) */}
+      <section id="layout" className="w-full py-12 sm:py-16 relative bg-cover bg-center" style={{ backgroundImage: "url('/background-image.jpg')" }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Text */}
+          <div className="text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#e6c86a] leading-tight mb-4">
+            Green Investment for Your Dream Home Future in Hyderabad
+            </h2>
+            <p className="text-white/90 text-base sm:text-lg leading-relaxed mb-6">
+            Strategically located near Hyderabad’s expansion belt (Burgula Shadnagar), Amodha is the perfect choice if you are looking for a peaceful yet well-connected place to build your home. Whether you wish to construct your dream house or invest for a greater ROI, Amodha offers premium open plots surrounded by greenery and modern infrastructure, making it one of the most promising destinations for your future.
+            </p>
+            <div className="flex gap-3">
+              <button onClick={handleEnquireNow} className="bg-[#b6821c] hover:bg-[#a6741a] text-white font-bold px-4 sm:px-6 py-2 sm:py-3 rounded shadow-lg text-sm sm:text-base">Enquire Now</button>
+            </div>
+          </div>
+          {/* Image Card */}
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <img src="/amodha.jpg" alt="Project visual" className="w-full h-64 sm:h-80 md:h-96 object-cover scale-110" />
+            <div className="absolute inset-0 bg-black/25"></div>
+          </div>
+        </div>
+      </section>
 
       {/* Layout Map Section */}
       <LayoutMapSection />

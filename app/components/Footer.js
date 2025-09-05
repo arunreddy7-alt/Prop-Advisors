@@ -48,7 +48,7 @@ const Footer = () => {
   };
 
   return (
-  <footer id="contact" className="w-full bg-[#b8a47a] text-black py-10 font-[Optima] mt-0">
+  <footer id="contact" className="w-full bg-[#f7e3b5] text-black py-10 font-[Optima] mt-0">
     <div className="max-w-7xl mx-auto px-4 md:px-10">
       {/* Headings */}
       <div className="mb-8">
@@ -158,7 +158,8 @@ const Footer = () => {
               />
             </div>
             <div className="space-y-2 text-black">
-              <p className="text-lg font-semibold">Address - </p>
+              <p className="text-lg font-semibold">Contact No - <a href="tel:9059911335" className="text-[#b6821c] underline">9059911335</a></p>
+              <p className="text-lg font-semibold">Address - H No 6-1-18 Provident Homes, Pkw-t08-609 Bhavani Colony, Katedan, Rajendranagar, Rangareddy, Hyderabad, India, Telangana</p>
             </div>
           </div>
         </div>

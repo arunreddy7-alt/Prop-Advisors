@@ -79,7 +79,7 @@ const AmenitiesSection = () => {
             {getCurrentAmenities().map((amenity, index) => (
               <div 
                 key={index}
-                className="flex-shrink-0 w-64 bg-[#b8a47a] rounded-xl p-6 text-white shadow-lg"
+                className="flex-shrink-0 w-64 bg-[#f7e3b5] rounded-xl p-6 text-black shadow-lg"
               >
                 <div className="text-4xl mb-4 text-center">{amenity.icon}</div>
                 <h3 className="text-lg font-semibold mb-2 text-center">{amenity.title}</h3>
@@ -92,7 +92,7 @@ const AmenitiesSection = () => {
         <div className="flex justify-between mt-4">
           <button 
             onClick={prevSlide}
-            className="w-12 h-12 bg-[#b8a47a] rounded-full flex items-center justify-center text-white hover:bg-[#A6845A] transition-colors shadow-lg"
+            className="w-12 h-12 bg-[#f7e3b5] rounded-full flex items-center justify-center text-black hover:bg-[#A6845A] transition-colors shadow-lg"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -101,7 +101,7 @@ const AmenitiesSection = () => {
 
           <button 
             onClick={nextSlide}
-            className="w-12 h-12 bg-[#b8a47a] rounded-full flex items-center justify-center text-white hover:bg-[#A6845A] transition-colors shadow-lg"
+            className="w-12 h-12 bg-[#f7e3b5] rounded-full flex items-center justify-center text-black hover:bg-[#A6845A] transition-colors shadow-lg"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
