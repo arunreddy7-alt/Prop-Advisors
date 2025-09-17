@@ -172,31 +172,29 @@ const AmenitiesSection = () => {
                     className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
-                  {/* Place Prev button on first card */}
-                  {index === 0 && (
-                    <button 
-                      onClick={prevGallerySlide}
-                      className="absolute top-1/2 -translate-y-1/2 left-4 w-12 h-12 bg-[#f7e3b5] rounded-full flex items-center justify-center text-black hover:bg-[#A6845A] transition-colors shadow-lg"
-                    >
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
-                    </button>
-                  )}
-                  {/* Place Next button on third card */}
-                  {index === 2 && (
-                    <button 
-                      onClick={nextGallerySlide}
-                      className="absolute top-1/2 -translate-y-1/2 right-4 w-12 h-12 bg-[#f7e3b5] rounded-full flex items-center justify-center text-black hover:bg-[#A6845A] transition-colors shadow-lg"
-                    >
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                  )}
                 </div>
               </div>
             ))}
+          </div>
+          {/* Gallery Navigation Arrows - Below Images */}
+          <div className="flex justify-between mt-2 max-w-[1200px] mx-auto px-2">
+            <button 
+              onClick={prevGallerySlide}
+              className="w-12 h-12 bg-[#f7e3b5] rounded-full flex items-center justify-center text-black hover:bg-[#A6845A] transition-colors shadow-lg"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <button 
+              onClick={nextGallerySlide}
+              className="w-12 h-12 bg-[#f7e3b5] rounded-full flex items-center justify-center text-black hover:bg-[#A6845A] transition-colors shadow-lg"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
 
