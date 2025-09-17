@@ -3,51 +3,77 @@ import React, { useState, useEffect } from 'react';
 
 const AmenitiesSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentGallerySlide, setCurrentGallerySlide] = useState(0);
 
   const amenities = [
     {
-      icon: "🏛️",
+      image: "/amenities/entrance.jpg",
       title: "Elegant Entrance Arch",
     },
     {
-      icon: "🛣️",
+      image: "/amenities/roads.jpg",
       title: "40 & 33 Ft. Roads",
     },
     {
-      icon: "🎠",
+      image: "/amenities/play-area.jpg",
       title: "Children Play Area & Landscaping Parks",
     },
     {
-      icon: "⚡",
+      image: "/amenities/electricity.jpg",
       title: "Underground Electricity",
     },
     {
-      icon: "🏢",
+      image: "/amenities/clubhouse.jpg",
       title: "633 Sq.Yds. Clubhouse",
     },
     {
-      icon: "🏏",
+      image: "/amenities/sports.jpg",
       title: "Box Cricket & Shuttle Court",
     },
     {
-      icon: "👁️",
+      image: "/amenities/surveillance.jpg",
       title: "24x7 Surveillance",
     },
     {
-      icon: "🌊",
+      image: "/amenities/drainage.jpg",
       title: "Underground Drainage Lines",
     }
+  ];
+
+  const galleryImages = [
+    { src: "/img1.jpg", alt: "Amodha Project" },
+    { src: "/img2.jpg", alt: "Project View" },
+    { src: "/img3.jpg", alt: "Project Landscape" },
+    { src: "/img4.jpg", alt: "Project Infrastructure" },
+    { src: "/img5.jpg", alt: "Project Development" },
+    { src: "/img6.jpg", alt: "Project Location" },
+    { src: "/img7.jpg", alt: "Project Site" },
+    { src: "/img8.jpg", alt: "Project Overview" },
+    { src: "/img9.jpg", alt: "Project Amenities" }
   ];
 
   // Create infinite loop by duplicating amenities
   const infiniteAmenities = [...amenities, ...amenities, ...amenities];
   const slidesPerView = 5;
+  
+  // Create infinite loop for gallery
+  const infiniteGalleryImages = [...galleryImages, ...galleryImages, ...galleryImages];
+  const gallerySlidesPerView = 3;
 
-  // Auto-slide effect
+  // Auto-slide effect for amenities
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => prev + 1);
     }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Auto-slide effect for gallery
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentGallerySlide((prev) => prev + 1);
+    }, 2500); // Change slide every 2.5 second
 
     return () => clearInterval(interval);
   }, []);
@@ -60,9 +86,22 @@ const AmenitiesSection = () => {
     setCurrentSlide((prev) => prev - 1);
   };
 
+  const nextGallerySlide = () => {
+    setCurrentGallerySlide((prev) => prev + 1);
+  };
+
+  const prevGallerySlide = () => {
+    setCurrentGallerySlide((prev) => prev - 1);
+  };
+
   const getCurrentAmenities = () => {
     const startIndex = currentSlide % amenities.length;
     return infiniteAmenities.slice(startIndex, startIndex + slidesPerView);
+  };
+
+  const getCurrentGalleryImages = () => {
+    const startIndex = currentGallerySlide % galleryImages.length;
+    return infiniteGalleryImages.slice(startIndex, startIndex + gallerySlidesPerView);
   };
 
   return (
@@ -77,12 +116,17 @@ const AmenitiesSection = () => {
         <div className="relative">
           <div className="flex gap-6 overflow-hidden">
             {getCurrentAmenities().map((amenity, index) => (
-              <div 
-                key={index}
-                className="flex-shrink-0 w-64 bg-[#f7e3b5] rounded-xl p-6 text-black shadow-lg"
-              >
-                <div className="text-4xl mb-4 text-center">{amenity.icon}</div>
-                <h3 className="text-lg font-semibold mb-2 text-center">{amenity.title}</h3>
+              <div key={index} className="flex-shrink-0 w-64">
+                <div className="w-64 h-40 bg-[#f7e3b5] rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src={amenity.image}
+                    alt={amenity.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="text-base font-semibold mt-3 text-center text-black">
+                  {amenity.title}
+                </h3>
               </div>
             ))}
           </div>
@@ -108,6 +152,57 @@ const AmenitiesSection = () => {
             </svg>
           </button>
         </div>
+      </div>
+
+      {/* Gallery Section */}
+      <div className="mt-20">
+        <h2 className="text-4xl md:text-5xl font-serif font-bold text-center text-black mb-12">
+          Project Gallery
+        </h2>
+        
+        {/* Gallery Slider */}
+        <div className="relative">
+          <div className="flex gap-6 overflow-hidden justify-center">
+            {getCurrentGalleryImages().map((image, index) => (
+              <div key={index} className="flex-shrink-0 w-96">
+                <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img 
+                    src={image.src} 
+                    alt={image.alt} 
+                    className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                  {/* Place Prev button on first card */}
+                  {index === 0 && (
+                    <button 
+                      onClick={prevGallerySlide}
+                      className="absolute top-1/2 -translate-y-1/2 left-4 w-12 h-12 bg-[#f7e3b5] rounded-full flex items-center justify-center text-black hover:bg-[#A6845A] transition-colors shadow-lg"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                  )}
+                  {/* Place Next button on third card */}
+                  {index === 2 && (
+                    <button 
+                      onClick={nextGallerySlide}
+                      className="absolute top-1/2 -translate-y-1/2 right-4 w-12 h-12 bg-[#f7e3b5] rounded-full flex items-center justify-center text-black hover:bg-[#A6845A] transition-colors shadow-lg"
+                    >
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+
+        
+        
       </div>
     </section>
   );

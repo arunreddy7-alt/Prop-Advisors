@@ -1,5 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
+import { emailjsConfig } from '../config/emailjs';
 
 const HighlightsSection = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -17,29 +19,27 @@ const HighlightsSection = () => {
     e.preventDefault();
     
     const formData = new FormData(e.target);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      project: formData.get('project'),
-      budget: formData.get('budget'),
+    const templateParams = {
+      from_name: formData.get('name'),
+      from_email: formData.get('email'),
+      from_phone: formData.get('phone'),
+      whatsapp: formData.get('whatsapp'),
+      city: formData.get('city'),
       timeline: formData.get('timeline'),
-      location: formData.get('location'),
-      comments: formData.get('comments')
+      remarks: formData.get('remarks'),
+      comments: formData.get('remarks'),
+      to_name: 'Amodha Team',
     };
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      });
+      const result = await emailjs.send(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        templateParams,
+        emailjsConfig.publicKey
+      );
 
-      const result = await response.json();
-      
-      if (result.success) {
+      if (result.status === 200) {
         alert('Thank you! Your message has been sent successfully. We will contact you soon.');
         closeForm();
         e.target.reset();
@@ -63,6 +63,7 @@ const HighlightsSection = () => {
 
   // Prevent background scrolling when form is open
   useEffect(() => {
+    emailjs.init(emailjsConfig.publicKey);
     if (isFormOpen) {
       // Simply prevent scrolling without changing body position
       document.body.style.overflow = 'hidden';
@@ -224,52 +225,68 @@ const HighlightsSection = () => {
             
             {/* Modal Body - Contact Form */}
             <div className="p-6">
-              <form className="space-y-4">
+              <form onSubmit={handleFormSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input
                     type="text"
+                    name="name"
                     placeholder="Name"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email ID"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
+                  />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
                   />
                   <input
                     type="tel"
-                    placeholder="Phone Number"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
-                  />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Project Interested"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
-                  />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    placeholder="What is your budget?"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
-                  />
-                  <input
-                    type="text"
-                    placeholder="How soon are you looking to buy?"
+                    name="whatsapp"
+                    placeholder="WhatsApp Number"
+                    required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
                   />
                 </div>
                 <input
                   type="text"
-                  placeholder="Where are you based out currently?"
+                  name="city"
+                  placeholder="City"
+                  required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
                 />
+                <div>
+                  <p className="mb-2 font-medium">How soon are you looking to buy?</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-300 cursor-pointer hover:bg-gray-50">
+                      <input type="radio" name="timeline" value="Immediately" required />
+                      <span>Immediately</span>
+                    </label>
+                    <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-300 cursor-pointer hover:bg-gray-50">
+                      <input type="radio" name="timeline" value="Within 1 month" />
+                      <span>Within 1 month</span>
+                    </label>
+                    <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-300 cursor-pointer hover:bg-gray-50">
+                      <input type="radio" name="timeline" value="Maybe later" />
+                      <span>Maybe later</span>
+                    </label>
+                  </div>
+                </div>
                 <textarea
-                  placeholder="Additional Comments/Remarks"
+                  name="remarks"
+                  placeholder="Remarks"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
-                  rows="4"
+                  rows="3"
                 ></textarea>
                 <button
                   type="submit"

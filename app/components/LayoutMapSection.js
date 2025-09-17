@@ -1,7 +1,18 @@
 'use client';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 
 const LayoutMapSection = () => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleTogglePlay = () => {
+    if (!videoRef.current) return;
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
+  };
   return (
     <section id="layout-map" className="w-full py-16 relative bg-white">
       <div className="relative max-w-7xl mx-auto px-4 md:px-10 z-10">
@@ -14,6 +25,31 @@ const LayoutMapSection = () => {
             Everything You Need is <br/>
             <span className="text-[#d3a94a]">Just Around the Corner</span>
           </h3>
+          <div className="max-w-3xl mx-auto mb-16">
+            <div className="relative cursor-pointer" onClick={handleTogglePlay}>
+              <video
+                ref={videoRef}
+                className="w-full rounded-2xl shadow-2xl border border-black/10"
+                preload="metadata"
+                playsInline
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onEnded={() => setIsPlaying(false)}
+                src="/WhatsApp%20Video%202025-09-13%20at%204.01.48%20PM.mp4"
+              >
+                Your browser does not support the video tag.
+              </video>
+              {!isPlaying && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-black/60 text-white shadow-lg hover:bg-black/70 transition pointer-events-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 md:w-10 md:h-10 ml-1">
+                      <path d="M8 5v14l11-7L8 5z" />
+                    </svg>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
           <p className="text-lg md:text-xl text-black/90 max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
             Strategic connectivity to major landmarks and amenities makes Amodha the perfect choice for your dream home
           </p>

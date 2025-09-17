@@ -17,11 +17,11 @@ const Footer = () => {
       from_name: formData.get('name'),
       from_email: formData.get('email'),
       from_phone: formData.get('phone'),
-      project_interested: formData.get('project'),
-      budget: formData.get('budget'),
+      whatsapp: formData.get('whatsapp'),
+      city: formData.get('city'),
       timeline: formData.get('timeline'),
-      location: formData.get('location'),
-      comments: formData.get('comments'),
+      remarks: formData.get('remarks'),
+      comments: formData.get('remarks'),
       to_name: 'Amodha Team'
     };
 
@@ -74,57 +74,58 @@ const Footer = () => {
                 className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
               <input
+                type="email"
+                name="email"
+                placeholder="Email ID"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input
                 type="tel"
                 name="phone"
                 placeholder="Phone Number"
                 required
                 className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              />
-              <input
-                type="text"
-                name="project"
-                placeholder="Project Interested"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                type="text"
-                name="budget"
-                placeholder="What is your budget?"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              />
-              <input
-                type="text"
-                name="timeline"
-                placeholder="How soon are you looking to buy?"
+                type="tel"
+                name="whatsapp"
+                placeholder="WhatsApp Number"
                 required
                 className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
             </div>
             <input
               type="text"
-              name="location"
-              placeholder="Where are you based out currently?"
+              name="city"
+              placeholder="City"
               required
               className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
             />
+            <div>
+              <p className="mb-2 font-medium">How soon are you looking to buy?</p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <label className="flex items-center gap-2 p-2 rounded-lg border border-black cursor-pointer hover:bg-black/5">
+                  <input type="radio" name="timeline" value="Immediately" required />
+                  <span>Immediately</span>
+                </label>
+                <label className="flex items-center gap-2 p-2 rounded-lg border border-black cursor-pointer hover:bg-black/5">
+                  <input type="radio" name="timeline" value="Within 1 month" />
+                  <span>Within 1 month</span>
+                </label>
+                <label className="flex items-center gap-2 p-2 rounded-lg border border-black cursor-pointer hover:bg-black/5">
+                  <input type="radio" name="timeline" value="Maybe later" />
+                  <span>Maybe later</span>
+                </label>
+              </div>
+            </div>
             <textarea
-              name="comments"
-              placeholder="Additional Comments/Remarks"
+              name="remarks"
+              placeholder="Remarks"
               className="w-full px-4 py-3 rounded-lg border border-black focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              rows="4"
+              rows="3"
             ></textarea>
             
             {/* Status Messages */}
@@ -150,16 +151,21 @@ const Footer = () => {
           
           {/* Logo and Contact Information */}
           <div className="mt-12 text-center">
-            <div className="mb-6">
+            <div className="mb-6 flex items-center justify-center gap-6">
               <img 
                 src="/logo.png" 
                 alt="Prop Advisors Logo" 
-                className="mx-auto w-32 h-32 filter brightness-0"
+                className="w-28 h-28 sm:w-32 sm:h-32 filter brightness-0"
+              />
+              <img 
+                src="/logo1.png" 
+                alt="Amodha Logo" 
+                className="w-28 h-28 sm:w-32 sm:h-32 filter brightness-0 scale-200 ml-2 sm:ml-4"
               />
             </div>
             <div className="space-y-2 text-black">
               <p className="text-lg font-semibold">Contact No - <a href="tel:9059911335" className="text-[#b6821c] underline">9059911335</a></p>
-              <p className="text-lg font-semibold">Address - H No 6-1-18 Provident Homes, Pkw-t08-609 Bhavani Colony, Katedan, Rajendranagar, Rangareddy, Hyderabad, India, Telangana</p>
+              <p className="text-lg font-semibold ">Address - <a className="text-black">Thimmajipalle, Bhurgula, Shadnagar, Hyderabad 509202</a></p>
             </div>
           </div>
         </div>

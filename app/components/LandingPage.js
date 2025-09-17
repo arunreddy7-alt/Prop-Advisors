@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { emailjsConfig } from '../config/emailjs';
 import StatsSection from './StatsSection';
@@ -29,11 +29,11 @@ const LandingPage = () => {
       from_name: formData.get('name'),
       from_email: formData.get('email'),
       from_phone: formData.get('phone'),
-      project_interested: formData.get('project'),
-      budget: formData.get('budget'),
+      whatsapp: formData.get('whatsapp'),
+      city: formData.get('city'),
       timeline: formData.get('timeline'),
-      location: formData.get('location'),
-      comments: formData.get('comments'),
+      remarks: formData.get('remarks'),
+      comments: formData.get('remarks'),
       to_name: 'Amodha Team'
     };
 
@@ -80,13 +80,33 @@ const LandingPage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Auto-open contact form when page loads
+  // Initialize EmailJS once
   useEffect(() => {
-    // Open form immediately when component mounts
-    setIsFormOpen(true);
-    
-    // Initialize EmailJS
     emailjs.init(emailjsConfig.publicKey);
+  }, []);
+
+  // Open contact form when LayoutMapSection enters viewport
+  const hasOpenedByScrollRef = useRef(false);
+  useEffect(() => {
+    if (hasOpenedByScrollRef.current) return;
+
+    const sectionElement = document.querySelector('#layout-map');
+    if (!sectionElement) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && !hasOpenedByScrollRef.current) {
+          hasOpenedByScrollRef.current = true;
+          setIsFormOpen(true);
+          observer.disconnect();
+        }
+      },
+      { root: null, threshold: 0.25 }
+    );
+
+    observer.observe(sectionElement);
+    return () => observer.disconnect();
   }, []);
 
   // Prevent background scrolling when form is open
@@ -118,13 +138,13 @@ const LandingPage = () => {
       }`}>
         {/* Logo */}
         <div className="flex items-center">
-          <img 
-            src="/logo.png" 
-            alt="Prop Advisors Logo" 
-            className="h-16 sm:h-16 md:h-20 w-auto filter brightness-0"
+          <img
+            src="/logo1.png"
+            alt="Prop Advisors Logo"
+            className="h-16 sm:h-16 md:h-20 w-auto filter brightness-0 transform scale-200"
           />
         </div>
-      
+
         {/* Desktop Menu - Right */}
         <ul className="hidden md:flex gap-8 items-center list-none m-0 p-0 ml-auto">
           <li><a href="#home" className="font-medium no-underline text-gray-800 hover:text-[#b6821c] transition-colors">Home</a></li>
@@ -170,12 +190,12 @@ const LandingPage = () => {
         >
           {/* Enhanced gradient overlays */}
           {/* Mobile: top-to-bottom gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-transparent pointer-events-none sm:hidden"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent pointer-events-none sm:hidden"></div>
           {/* Desktop/tablet: side and partial top/bottom gradients */}
-          <div className="hidden sm:block absolute left-0 top-0 h-full w-2/3 bg-gradient-to-r from-black/90 via-black/70 to-transparent pointer-events-none"></div>
-          <div className="hidden sm:block absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-black/70 via-black/40 to-transparent pointer-events-none"></div>
-          <div className="hidden sm:block absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/80 via-black/50 to-transparent pointer-events-none"></div>
-          <div className="hidden sm:block absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black/60 via-black/30 to-transparent pointer-events-none"></div>
+          <div className="hidden sm:block absolute left-0 top-0 h-full w-2/3 bg-gradient-to-r from-black/70 via-black/50 to-transparent pointer-events-none"></div>
+          <div className="hidden sm:block absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-black/50 via-black/30 to-transparent pointer-events-none"></div>
+          <div className="hidden sm:block absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/50 via-black/30 to-transparent pointer-events-none"></div>
+          <div className="hidden sm:block absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black/40 via-black/20 to-transparent pointer-events-none"></div>
         </div>
         
         {/* Background overlay section (slightly shifted up) */}
@@ -298,55 +318,56 @@ const LandingPage = () => {
                     className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b6821c] text-sm sm:text-base"
                   />
                   <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
+                    type="email"
+                    name="email"
+                    placeholder="Email ID"
                     required
                     className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b6821c] text-sm sm:text-base"
                   />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
                   <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
                     required
-                    className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A] text-sm sm:text-base"
+                    className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b6821c] text-sm sm:text-base"
                   />
                   <input
-                    type="text"
-                    name="project"
-                    placeholder="Project Interested"
+                    type="tel"
+                    name="whatsapp"
+                    placeholder="WhatsApp Number"
                     required
-                    className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A] text-sm sm:text-base"
-                  />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
-                  <input
-                    type="text"
-                    name="budget"
-                    placeholder="What is your budget?"
-                    required
-                    className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A] text-sm sm:text-base"
-                  />
-                  <input
-                    type="text"
-                    name="timeline"
-                    placeholder="How soon are you looking to buy?"
-                    required
-                    className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A] text-sm sm:text-base"
+                    className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b6821c] text-sm sm:text-base"
                   />
                 </div>
                 <input
                   type="text"
-                  name="location"
-                  placeholder="Where are you based out currently?"
+                  name="city"
+                  placeholder="City"
                   required
-                  className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A] text-sm sm:text-base"
+                  className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b6821c] text-sm sm:text-base"
                 />
+                <div className="pt-1">
+                  <p className="text-sm sm:text-base font-medium text-gray-700 mb-2">How soon are you looking to buy?</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-300 cursor-pointer hover:bg-gray-50">
+                      <input type="radio" name="timeline" value="Immediately" required />
+                      <span className="text-sm sm:text-base">Immediately</span>
+                    </label>
+                    <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-300 cursor-pointer hover:bg-gray-50">
+                      <input type="radio" name="timeline" value="Within 1 month" />
+                      <span className="text-sm sm:text-base">Within 1 month</span>
+                    </label>
+                    <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-300 cursor-pointer hover:bg-gray-50">
+                      <input type="radio" name="timeline" value="Maybe later" />
+                      <span className="text-sm sm:text-base">Maybe later</span>
+                    </label>
+                  </div>
+                </div>
                 <textarea
-                  name="comments"
-                  placeholder="Additional Comments/Remarks"
+                  name="remarks"
+                  placeholder="Remarks"
                   className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A] text-sm sm:text-base"
                   rows="3"
                 ></textarea>
