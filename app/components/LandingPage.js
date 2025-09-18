@@ -11,10 +11,17 @@ const LandingPage = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isDownloadMode, setIsDownloadMode] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleEnquireNow = () => {
+    setIsDownloadMode(false);
     setIsFormOpen(true);
+  };
+
+  const handleDownloadBrochureClick = () => {
+    setIsDownloadMode(true);
+    setIsFormOpen(true); // Open form first, download after submit
   };
 
   const closeForm = () => {
@@ -47,6 +54,10 @@ const LandingPage = () => {
 
       if (result.status === 200) {
         alert('Thank you! Your message has been sent successfully. We will contact you soon.');
+        if (isDownloadMode) {
+          handleDownloadBrochure();
+          setIsDownloadMode(false);
+        }
         closeForm();
         e.target.reset();
       } else {
@@ -98,6 +109,7 @@ const LandingPage = () => {
         const entry = entries[0];
         if (entry.isIntersecting && !hasOpenedByScrollRef.current) {
           hasOpenedByScrollRef.current = true;
+          setIsDownloadMode(false);
           setIsFormOpen(true);
           observer.disconnect();
         }
@@ -232,8 +244,8 @@ const LandingPage = () => {
                 >
                   Enquire Now
                 </button>
-                <button 
-                  onClick={handleDownloadBrochure}
+                <button
+                  onClick={handleDownloadBrochureClick}
                   className="bg-[#b6821c] text-white px-3 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-3 rounded font-bold hover:bg-[#a6741a] transition text-xs sm:text-sm md:text-base shadow-lg"
                 >
                   Download Brochure
@@ -301,8 +313,8 @@ const LandingPage = () => {
           >
             {/* Modal Header */}
             <div className="flex justify-between items-center p-3 sm:p-6 border-b">
-              <h2 className="text-lg sm:text-2xl font-bold text-gray-800">Contact Us</h2>
-              <button 
+              <h2 className="text-lg sm:text-2xl font-bold text-gray-800">{isDownloadMode ? 'Download Brochure' : 'Contact Us'}</h2>
+              <button
                 onClick={closeForm}
                 className="text-gray-500 hover:text-gray-700 text-lg sm:text-2xl font-bold"
               >
@@ -325,6 +337,7 @@ const LandingPage = () => {
                     type="email"
                     name="email"
                     placeholder="Email ID"
+                    
                     className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b6821c] text-sm sm:text-base"
                   />
                 </div>
@@ -348,6 +361,7 @@ const LandingPage = () => {
                   type="text"
                   name="city"
                   placeholder="City"
+                  
                   className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b6821c] text-sm sm:text-base"
                 />
                 <div className="pt-1">

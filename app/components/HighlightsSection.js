@@ -238,7 +238,7 @@ const HighlightsSection = () => {
                     type="email"
                     name="email"
                     placeholder="Email ID"
-                    
+                    required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
                   />
                 </div>
@@ -262,14 +262,14 @@ const HighlightsSection = () => {
                   type="text"
                   name="city"
                   placeholder="City"
-                  
+                  required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B8956A]"
                 />
                 <div>
                   <p className="mb-2 font-medium">How soon are you looking to buy?</p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-300 cursor-pointer hover:bg-gray-50">
-                      <input type="radio" name="timeline" value="Immediately"  />
+                      <input type="radio" name="timeline" value="Immediately" required />
                       <span>Immediately</span>
                     </label>
                     <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-300 cursor-pointer hover:bg-gray-50">
