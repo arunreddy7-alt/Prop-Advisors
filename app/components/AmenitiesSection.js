@@ -162,20 +162,25 @@ const AmenitiesSection = () => {
         
         {/* Gallery Slider */}
         <div className="relative">
-          <div className="flex gap-6 overflow-hidden justify-center">
-            {getCurrentGalleryImages().map((image, index) => (
-              <div key={index} className="flex-shrink-0 w-96">
-                <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
-                    className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
-                </div>
-              </div>
-            ))}
-          </div>
+  <div className="flex gap-4 sm:gap-6 overflow-hidden justify-center">
+    {getCurrentGalleryImages().map((image, index) => (
+      <div 
+        key={index} 
+        className="flex-shrink-0 w-72 sm:w-80 md:w-96"  // smaller box on mobile
+      >
+        <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+          <img 
+            src={image.src} 
+            alt={image.alt} 
+            className="w-full h-64 sm:h-72 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
           {/* Gallery Navigation Arrows - Below Images */}
           <div className="flex justify-between mt-2 max-w-[1200px] mx-auto px-2">
             <button 
@@ -201,7 +206,7 @@ const AmenitiesSection = () => {
 
         
         
-      </div>
+      
     </section>
   );
 };

@@ -185,36 +185,40 @@ const LandingPage = () => {
         
         {/* White Rectangle Shape with Background Image */}
         <div
-          className="absolute bottom-28 sm:bottom-85 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[95vw] sm:w-[90vw] max-w-[1250px] h-[450px] sm:h-[500px] md:h-[600px] lg:h-[700px] rounded-lg shadow-lg z-25 bg-cover bg-center relative overflow-hidden"
-          style={{ backgroundImage: "url('/bg1.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-        >
-          {/* Enhanced gradient overlays */}
-          {/* Mobile: top-to-bottom gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent pointer-events-none sm:hidden"></div>
-          {/* Desktop/tablet: side and partial top/bottom gradients */}
-          <div className="hidden sm:block absolute left-0 top-0 h-full w-2/3 bg-gradient-to-r from-black/70 via-black/50 to-transparent pointer-events-none"></div>
-          <div className="hidden sm:block absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-black/50 via-black/30 to-transparent pointer-events-none"></div>
-          <div className="hidden sm:block absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/50 via-black/30 to-transparent pointer-events-none"></div>
-          <div className="hidden sm:block absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black/40 via-black/20 to-transparent pointer-events-none"></div>
-        </div>
-        
-        {/* Background overlay section (slightly shifted up) */}
-        <div className="absolute left-0 w-full h-full bg-[#f7e3b5] z-15 -top-60"></div>
-        
+  className="absolute bottom-28 sm:bottom-85 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[95vw] sm:w-[90vw] max-w-[1250px] h-[450px] sm:h-[500px] md:h-[600px] lg:h-[700px] rounded-lg shadow-lg z-25 bg-cover bg-[position:30%_center] sm:bg-center relative overflow-hidden"
+  style={{ backgroundImage: "url('/bg1.jpg')" }}
+>
+  {/* Mobile: top-to-bottom gradient */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent pointer-events-none sm:hidden"></div>
+
+  {/* Desktop/tablet: side and partial top/bottom gradients */}
+  <div className="hidden sm:block absolute left-0 top-0 h-full w-2/3 bg-gradient-to-r from-black/70 via-black/50 to-transparent pointer-events-none"></div>
+  <div className="hidden sm:block absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-black/50 via-black/30 to-transparent pointer-events-none"></div>
+  <div className="hidden sm:block absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/50 via-black/30 to-transparent pointer-events-none"></div>
+  <div className="hidden sm:block absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black/40 via-black/20 to-transparent pointer-events-none"></div>
+</div>
+
+{/* Background overlay section */}
+<div className="absolute left-0 w-full h-full bg-[#f7e3b5] z-15 -top-60"></div>
+
         {/* Content */}
         <div className="absolute inset-0 flex items-start z-30 pt-65 sm:pt-7 sm:items-center">
           <div className="max-w-7xl mx-auto px-4 md:px-10 w-full">
             <div className="text-black max-w-2xl text-left ml-0 px-4 sm:px-0">
               <div className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-light italic mb-4 -mt-8" style={{ fontFamily: "'Calligraffitti', cursive" }}>
               </div>
-              <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#e6c86a] mb-1 sm:mb-2 leading-tight drop-shadow-lg">
-              Invest in a promising future with Amodha
-              </h1>
-              <div className="mb-2 sm:mb-3">
-                <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white drop-shadow-lg font-semibold">Exclusive </span>
-                <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-[#e6c86a] font-bold drop-shadow-lg">Open Plots</span>
-                <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white drop-shadow-lg font-semibold"> Near Hyderabad</span>
-              </div>
+              <div className="relative -translate-y-22 sm:-translate-y-4 md:-translate-y-5">
+  <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#e6c86a] mb-2 sm:mb-2 leading-tight drop-shadow-lg">
+    Invest in a promising future with Amodha
+  </h1>
+  <div className="mb-2 sm:mb-3">
+    <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white drop-shadow-lg font-semibold">Exclusive </span>
+    <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-[#e6c86a] font-bold drop-shadow-lg">Open Plots</span>
+    <span className="text-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white drop-shadow-lg font-semibold"> Near Hyderabad</span>
+  </div>
+</div>
+
+
               <div className="text-lg sm:text-lg md:text-xl lg:text-2xl text-[#e6c86a] font-bold mb-2 sm:mb-4 drop-shadow-lg">
               Burgula, Shadnagar
               </div>
