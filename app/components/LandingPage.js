@@ -90,7 +90,7 @@ const LandingPage = () => {
   useEffect(() => {
     if (hasOpenedByScrollRef.current) return;
 
-    const sectionElement = document.querySelector('#layout-map');
+    const sectionElement = document.querySelector('#contact');
     if (!sectionElement) return;
 
     const observer = new IntersectionObserver(
@@ -325,7 +325,6 @@ const LandingPage = () => {
                     type="email"
                     name="email"
                     placeholder="Email ID"
-                    required
                     className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b6821c] text-sm sm:text-base"
                   />
                 </div>
@@ -349,14 +348,13 @@ const LandingPage = () => {
                   type="text"
                   name="city"
                   placeholder="City"
-                  required
                   className="w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b6821c] text-sm sm:text-base"
                 />
                 <div className="pt-1">
                   <p className="text-sm sm:text-base font-medium text-gray-700 mb-2">How soon are you looking to buy?</p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-300 cursor-pointer hover:bg-gray-50">
-                      <input type="radio" name="timeline" value="Immediately" required />
+                      <input type="radio" name="timeline" value="Immediately"  />
                       <span className="text-sm sm:text-base">Immediately</span>
                     </label>
                     <label className="flex items-center gap-2 p-2 rounded-lg border border-gray-300 cursor-pointer hover:bg-gray-50">
