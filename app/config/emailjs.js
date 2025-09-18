@@ -1,6 +1,6 @@
 // EmailJS Configuration
 export const emailjsConfig = {
-  serviceId: 'service_2q8ialo', // Replace with your EmailJS service ID
-  templateId: 'template_c583wrk', // Replace with your EmailJS template ID
-  publicKey: 'fxIq3mEsIuoKM-0nb' // Replace with your EmailJS public key
+  serviceId: 'service_b2lidll', // Replace with your EmailJS service ID
+  templateId: 'template_lvilk7j', // Replace with your EmailJS template ID
+  publicKey: 'ip_qawaP1TdJkIVdw' // Replace with your EmailJS public key
 };
