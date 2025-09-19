@@ -194,7 +194,6 @@ const LandingPage = () => {
       
       {/* Hero section */}
       <div id="home" className="relative w-full min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/hero-bg.jpg')" }}>
-        
         {/* White Rectangle Shape with Background Image */}
         <div
   className="absolute bottom-28 sm:bottom-85 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[95vw] sm:w-[90vw] max-w-[1250px] h-[450px] sm:h-[500px] md:h-[600px] lg:h-[700px] rounded-lg shadow-lg z-25 bg-cover bg-[position:30%_center] sm:bg-center relative overflow-hidden"
